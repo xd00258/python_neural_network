@@ -81,7 +81,7 @@ if __name__ == "__main__":
     training_set_outputs = array([[0, 1, 1, 0]]).T
 
     #train it
-    neural_network.train(training_set_inputs, training_set_outputs, 50000)
+    neural_network.train(training_set_inputs, training_set_outputs, 100000)
 
     print ("Stage 2) New synaptic weigths after training: ")
     neural_network.print_weights()
