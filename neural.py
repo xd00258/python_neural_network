@@ -1,10 +1,12 @@
 from numpy import exp, array, random, dot
 
 class NeuronLayer():
+    #initialize weights with random values
     def __init__(self, number_of_neurons, number_of_inputs_per_neuron):
         self.synaptic_weights = 2 * random.random((number_of_inputs_per_neuron, number_of_neurons)) - 1
 
 class NeuralNetwork():
+    #add layers to network
     def __init__(self, layer1, layer2):
         self.layer1 = layer1
         self.layer2 = layer2
