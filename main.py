@@ -24,7 +24,7 @@ y = np.array([[0,0,1,1]]).T
 syn0 = 2*np.random.random((3,1)) - 1
 
 #begin training
-for iter in range(10000):
+for iter in range(1000):
 
     #forward propagation
     l0 = X         #layer 0 is our input dataset with 4 training examples
@@ -33,6 +33,10 @@ for iter in range(10000):
     #calculate miss/loss
     l1_error = y - l1
     l1_delta = l1_error * nonlin(l1,True)
+
+    #cost
+    cost = np.sum(np.square(l1_delta))
+    print("cost: ", cost)
 
     #update weights
     syn0 += np.dot(l0.T, l1_delta)
