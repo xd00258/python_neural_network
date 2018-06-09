@@ -47,7 +47,7 @@ class NeuralNetwork():
     
     #printing function
     def print_weights(self):
-        print (" Layer 1 (4 neurons, 3 inputs each): ")
+        print (" Layer 1 (4 neurons, 2 inputs each): ")
         print (self.layer1.synaptic_weights)
         print (" Layer 2 (1 neuron, 4 inputs each): ")
         print (self.layer2.synaptic_weights)
@@ -58,7 +58,7 @@ if __name__ == "__main__":
     random.seed(1)
 
     #Layer 1
-    layer1 = NeuronLayer(4,3)
+    layer1 = NeuronLayer(4,2)
 
     #Layer 2
     layer2 = NeuronLayer(1,4)
@@ -71,23 +71,21 @@ if __name__ == "__main__":
 
     #training set
     training_set_inputs = array([
-        [0, 0, 1],
-        [0, 1, 1],
-        [1, 0, 1],
-        [0, 1, 0],
-        [1, 0, 0],
-        [1, 1, 1],
-        [0, 0, 0]
+        [0, 0],
+        [0, 1],
+        [1, 0],
+        [1, 1]
      ])
-    training_set_outputs = array([[0, 1, 1, 1, 1, 0, 0]]).T
+    training_set_outputs = array([[0, 1, 1, 0]]).T
 
     #train it
-    neural_network.train(training_set_inputs, training_set_outputs, 60000)
+    neural_network.train(training_set_inputs, training_set_outputs, 50000)
 
     print ("Stage 2) New synaptic weigths after training: ")
     neural_network.print_weights()
 
     #test with new situation
-    print ("Stage 3) Doing new situation: ")
-    hidden_state, output = neural_network.think(array([1,1,0]))
+    new_situation = array([0,0])
+    hidden_state, output = neural_network.think(new_situation)
+    print ("Stage 3) Doing new situation: ", new_situation)
     print (output)
